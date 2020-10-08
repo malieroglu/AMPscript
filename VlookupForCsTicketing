@@ -7,7 +7,7 @@ set @lookupValue = AttributeValue("lookupField")
 
 set @lookupValue = "RAF" 
 set @numRowsToReturn = 0 /* 0 means all, max 2000 */
-set @rows = LookupOrderedRows("Refer_A_Friend",@numRowsToReturn,"Referral FI ID, Life User ID, Referral Email Address, Referring Life User ID, Referring Party Email Address, Date Referred, Date Enrolled","Fix", @lookupValue)
+set @rows = LookupOrderedRows("RAF-Auto",@numRowsToReturn,"Referral FI ID, Life User ID, Referral Email Address, Referring Life User ID, Referring Party Email Address, Date Referred, Date Enrolled","Fix", @lookupValue)
 set @rowCount = rowcount(@rows)
 
 if @rowCount > 0 then
