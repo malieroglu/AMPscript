@@ -1,0 +1,43 @@
+%%[
+var @rows, @row, @rowCount, @numRowsToReturn, @lookupValue, @i
+
+set @lookupValue = AttributeValue("lookupField")
+
+set @lookupValue = "Ali" 
+set @numRowsToReturn = 0 /* 0 means all, max 2000 */
+set @rows = LookupOrderedRows("CS_Ticketing_Automation",@numRowsToReturn,"PhoneNumber, Entry_Dt, EmailAddress, FI, Request","Fix", @lookupValue)
+set @rowCount = rowcount(@rows)
+
+if @rowCount > 0 then
+
+  for @i = 1 to @rowCount do
+
+    var @PhoneNumber, @Entry_Dt, @EmailAddress, @FI, @Request
+    set @row = row(@rows,@i) 
+    set @PhoneNumber = field(@row,"PhoneNumber")
+    set @Entry_Dt = field(@row,"Entry_Dt")
+    set @EmailAddress = field(@row,"EmailAddress")
+    set @FI = field(@row,"FI")
+    set @Request = field(@row,"Request")
+
+    ]%%
+
+
+<br><br><br>
+<span style="color:#000000;"><b>Ticket </b>%%=v(@i)=%%<br><br>
+<b>Phone Number</b>: %%=v(@PhoneNumber)=%%<br>
+<b>Entry Time</b>: %%=v(@Entry_Dt)=%%<br>
+<b>Email Address</b>: %%=v(@EmailAddress)=%%<br>
+<b>FI</b>: %%=v(@FI)=%%<br>
+<b>Request</b>: %%=v(@Request)=%%</span>
+
+    %%[ 
+  next @i ]%%
+
+%%[ else ]%%
+
+No rows found
+
+%%[ endif ]%%
+
+
