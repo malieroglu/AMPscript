@@ -1,35 +1,41 @@
+<ul>
+
 %%[
 var @rows, @row, @rowCount, @numRowsToReturn, @lookupValue, @i
 
 set @lookupValue = AttributeValue("lookupField")
 
-set @lookupValue = "Ali" 
+set @lookupValue = "RAF" 
 set @numRowsToReturn = 0 /* 0 means all, max 2000 */
-set @rows = LookupOrderedRows("CS_Ticketing_Automation",@numRowsToReturn,"PhoneNumber, Entry_Dt, EmailAddress, FI, Request","Fix", @lookupValue)
+set @rows = LookupOrderedRows("Refer_A_Friend",@numRowsToReturn,"Referral FI ID, Life User ID, Referral Email Address, Referring Life User ID, Referring Party Email Address, Date Referred, Date Enrolled","Fix", @lookupValue)
 set @rowCount = rowcount(@rows)
 
 if @rowCount > 0 then
 
   for @i = 1 to @rowCount do
 
-    var @PhoneNumber, @Entry_Dt, @EmailAddress, @FI, @Request
+    var @ReferralFIID, @LifeUserID, @ReferralEmailAddress, @ReferringLifeUserID, @@ReferringEmailAddress, @DateReferred, @DateEnrolled
     set @row = row(@rows,@i) 
-    set @PhoneNumber = field(@row,"PhoneNumber")
-    set @Entry_Dt = field(@row,"Entry_Dt")
-    set @EmailAddress = field(@row,"EmailAddress")
-    set @FI = field(@row,"FI")
-    set @Request = field(@row,"Request")
+    set @ReferralFIID = field(@row,"Referral FI ID")
+    set @LifeUserID = field(@row,"Life User ID")
+    set @ReferralEmailAddress = field(@row,"Referral Email Address")
+    set @ReferringLifeUserID = field(@row,"Referring Life User ID")
+    set @ReferringEmailAddress = field(@row,"Referring Party Email Address")
+    set @DateReferred = field(@row,"Date Referred")
+    set @DateEnrolled = field(@row,"Date Enrolled")
 
     ]%%
 
 
-<br><br><br>
-<span style="color:#000000;"><b>Ticket </b>%%=v(@i)=%%<br><br>
-<b>Phone Number</b>: %%=v(@PhoneNumber)=%%<br>
-<b>Entry Time</b>: %%=v(@Entry_Dt)=%%<br>
-<b>Email Address</b>: %%=v(@EmailAddress)=%%<br>
-<b>FI</b>: %%=v(@FI)=%%<br>
-<b>Request</b>: %%=v(@Request)=%%</span>
+<br>
+<span style="color:#000000;"><li><b>RAF </b>%%=v(@i)=%%</li><br>
+ <li><b>FI ID</b>: %%=v(@ReferralFIID)=%%</li>
+ <li><b>Referring Email</b>: %%=v(@ReferringEmailAddress)=%%</li>
+ <li><b>Referring Life User ID</b>: %%=v(@ReferringLifeUserID)=%%</li>
+ <li><b>Referral Email</b>: %%=v(@ReferralEmailAddress)=%%</li>
+ <li><b>Referral Life User ID</b>: %%=v(@LifeUserID)=%%</li>
+ <li><b>Referring Date</b>: %%=v(@DateReferred)=%%</li>
+ <li><b>Referral Enrollment Date</b>: %%=v(@DateEnrolled)=%%</li></span>
 
     %%[ 
   next @i ]%%
@@ -40,4 +46,4 @@ No rows found
 
 %%[ endif ]%%
 
-
+<ul>
