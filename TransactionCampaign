@@ -1,0 +1,43 @@
+%%[ set @status = attributeValue('Progress')
+
+ if @status >= 0 and @status <= 20 then
+     
+   
+     set @statusImage = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/1b25a410-2854-4939-b861-06e79eee721a.png'
+
+   
+ elseif @status >= 21 and @status <= 40 then
+     
+   
+     set @statusImage = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/d3f727de-8127-46d0-85b7-14e9ce541c56.png'
+     
+     
+   
+ elseif @status >= 41 and @status <= 60 then
+     
+   
+     set @statusImage = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/379fda3c-6418-47e6-818b-c951c431dc42.png'
+     
+          
+   
+ elseif @status >= 61 and @status <= 80 then
+     
+   
+     set @statusImage = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/51a07079-0b5c-41bf-b964-ffae4369d8a6.png'
+     
+     
+ elseif @status >= 81 and @status <= 99 then
+     
+   
+     set @statusImage = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/960cabf6-ca00-4844-af0e-2566de97660c.png'
+
+
+else
+
+ set @statusImage = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/35425fbf-1d45-4e92-ab69-653b02e08394.gif'
+
+
+   
+   
+ endif
+ ]%%
