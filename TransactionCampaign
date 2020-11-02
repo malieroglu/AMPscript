@@ -41,3 +41,7 @@ else
    
  endif
  ]%%
+ 
+ 
+ img:  %%=RedirectTo(@statusImage)=%%
+link:  %%=RedirectTo(@statusLink2)=%%
