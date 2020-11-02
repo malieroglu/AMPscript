@@ -1,0 +1,61 @@
+%%[ 
+
+set @status = attributeValue('FI ID') 
+
+if 
+
+ @status == 'mylsb' 
+ 
+ then
+ 
+ set @statusProgram = 'Abe Advantage'
+ 
+ set @statusProgramu = 'Abe U'
+ 
+ set @statusimg = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/619475fc-1d3e-4ba3-ae6f-b34da95e5998.png'
+ 
+set @statusLink = 'https://www.mylsb.com/support/contact-lsb.aspx'
+ 
+ 
+ elseif
+ 
+ @status == 'hhfcu' 
+ then
+ 
+ set @statusProgram = 'myHeritage Rewards'
+ 
+ set @statusProgramu = 'Hudson U'
+ 
+ set @statusimg = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/619475fc-1d3e-4ba3-ae6f-b34da95e5998.png'
+ 
+ set @statusLink = 'https://heritagefcu.com/contact-us/'
+ 
+ elseif
+ 
+ @status == 'siucu' 
+ then
+ 
+ set @statusProgram = 'Buzz Points'
+ 
+ set @statusProgramu = 'Buzz'
+ 
+ set @statusimg = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/df3a0aec-b5e4-43dc-84e6-5ff0fc4f455a.png'
+ 
+ set @statusLink = 'http://cloud.buzzpoints-email.com/contact'
+ 
+ else
+ 
+set @statusProgram = 'Buzz Points' 
+
+set @statusProgramu = 'Buzz'
+
+set @statusimg = 'http://image.buzzpoints-email.com/lib/fe3f157175640479711270/m/1/df3a0aec-b5e4-43dc-84e6-5ff0fc4f455a.png'
+
+ set @statusLink = 'http://cloud.buzzpoints-email.com/contact'
+ 
+ endif
+
+]%%
+
+img:  %%=RedirectTo(@statusimg)=%%
+link:  %%=RedirectTo(@statusLink2)=%%
